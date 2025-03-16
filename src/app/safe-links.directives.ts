@@ -1,4 +1,4 @@
-import { Directive, Input } from '@angular/core';
+import { Directive, ElementRef, Input, inject } from '@angular/core';
 
 @Directive({
   //selector use to tell angular to witch element that directive applied
@@ -11,6 +11,8 @@ import { Directive, Input } from '@angular/core';
 export class SafeLinkDirective {
   //   @Input() queryParam: string = 'myapp';
   @Input({ alias: 'appSafeLink' }) queryParam: string = 'myapp'; //adding alias for queryParam
+
+  private hostElementRef = inject<ElementRef<HTMLAnchorElement>>(ElementRef);
   constructor() {
     console.log('safeLink directive is active!');
   }
@@ -21,8 +23,8 @@ export class SafeLinkDirective {
     if (wantsToLeave) {
       //initail typescript doesnot know that event have href to
       // convence typescript that its anchor element by as HTMLAnchorElement
-      const address = (event.target as HTMLAnchorElement).href;
-      (event.target as HTMLAnchorElement).href =
+      const address = this.hostElementRef.nativeElement.href;
+      this.hostElementRef.nativeElement.href =
         address + '?from=' + this.queryParam;
       return;
     }

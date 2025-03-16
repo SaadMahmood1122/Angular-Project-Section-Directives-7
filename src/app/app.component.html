@@ -9,5 +9,10 @@
   } -->
   <!-- OR -->
   <!-- <p *ngIf="isAdmin()">Only admin can see this page</p> -->
-  <p appAuth="guest">Only admin can see this page</p>
+  <ng-template appAuth="admin">
+    <p>Only admin can see this page</p>
+  </ng-template>
+  <ng-template appAuth="guest">
+    <p>Only guest can see this page</p>
+  </ng-template>
 </main>

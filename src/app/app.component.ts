@@ -4,7 +4,7 @@ import { AuthComponent } from './auth/auth.component';
 import { LearningResourcesComponent } from './learning-resources/learning-resources.component';
 import { AuthService } from './auth/auth.service';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { AuthDirective } from './auth/auth.directive';
 
 @Component({
@@ -16,7 +16,6 @@ import { AuthDirective } from './auth/auth.directive';
     AuthComponent,
     LearningResourcesComponent,
     FormsModule,
-    NgIf,
     AuthDirective,
   ],
 })
